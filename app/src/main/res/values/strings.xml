@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">FilmRecomender</string>
+    <string name="app_name">Film Recomender</string>
+    <string name="poster">Poster</string>
+    <string name="averageRate">Оценка пользователей: %d</string>
+    <string name="releaseDate">Дата выхода: %s</string>
+    <string name="runtime">Длительность: %d</string>
+    <string name="filmGenres">Жанр: %s</string>
 </resources>
