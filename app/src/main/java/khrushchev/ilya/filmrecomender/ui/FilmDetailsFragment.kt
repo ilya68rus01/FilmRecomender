@@ -10,7 +10,7 @@ import khrushchev.ilya.filmrecomender.databinding.FragmentFilmDetailsBinding
 
 class FilmDetailsFragment : Fragment() {
     private var _binding: FragmentFilmDetailsBinding? = null
-    private val binding = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
