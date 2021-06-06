@@ -11,4 +11,14 @@
         android:title="Рекомендации"
         android:icon="@drawable/ic_baseline_analytics_24"></item>
 
+    <item
+        android:id="@+id/search"
+        android:title="Рекомендации"
+        android:icon="@drawable/ic_baseline_search_24"></item>
+
+    <item
+        android:id="@+id/profile"
+        android:title="Профиль"
+        android:icon="@drawable/ic_baseline_person_24"></item>
+
 </menu>
