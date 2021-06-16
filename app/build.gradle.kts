@@ -46,10 +46,9 @@ android {
 
 dependencies {
 
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-
     implementation(AppDependencies.appLibraries)
-    implementation(AppDependencies.testLibraries)
+    testImplementation(AppDependencies.testLibraries)
+    annotationProcessor(AppDependencies.roomAnnotation)
 
     // dagger
     kapt("com.google.dagger:dagger-compiler:${Versions.dagger}")

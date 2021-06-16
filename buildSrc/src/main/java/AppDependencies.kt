@@ -63,6 +63,10 @@ object AppDependencies {
     // Testing Navigation
     val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
 
+    val annotation = arrayListOf<String>().apply {
+        add(roomAnnotation)
+    }
+
     val appLibraries = arrayListOf<String>().apply {
         add(stdLib)
         add(coreKtx)
@@ -80,7 +84,6 @@ object AppDependencies {
         add(rxAndroid)
         add(rxJava)
         add(room)
-        add(roomAnnotation)
         add(roomRx)
         add(retrofit)
         add(fragmentKtx)
