@@ -13,6 +13,8 @@ object Versions {
     val paging = "3.0.0"
     val room = "2.3.0"
     val fragment = "1.3.4"
+    val retrofit = "2.1.0"
+    val gson = "2.8.7"
 
     //test
     val junit = "4.12"

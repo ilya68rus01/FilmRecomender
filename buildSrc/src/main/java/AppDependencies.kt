@@ -45,8 +45,6 @@ object AppDependencies {
     // optional - RxJava3 support for Room
     val roomRx = "androidx.room:room-rxjava3:${Versions.room}"
 
-    //Retrofit
-    val retrofit = "com.squareup.retrofit2:retrofit:2.1.0"
 
     // Kotlin
     val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
@@ -85,7 +83,6 @@ object AppDependencies {
         add(rxJava)
         add(room)
         add(roomRx)
-        add(retrofit)
         add(fragmentKtx)
     }
 
