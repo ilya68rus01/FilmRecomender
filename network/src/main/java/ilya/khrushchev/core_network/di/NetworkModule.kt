@@ -1,5 +1,6 @@
 package ilya.khrushchev.core_network.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import ilya.khrushchev.core_network.TMDbRequests
@@ -24,12 +25,7 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideTMDbRepository(api: TMDbApi): TMDbRequests {
-        return TMDbRequests(api)
-    }
-
-    @Provides
-    fun providesOpenWeatherRetrofit(
+    fun providesTMDbRetrofit(
         converterFactory: GsonConverterFactory,
         callAdapter: RxJava3CallAdapterFactory
     ): Retrofit {
@@ -44,4 +40,10 @@ class NetworkModule {
     fun provideTMDbApi(retrofit: Retrofit): TMDbApi {
         return retrofit.create(TMDbApi::class.java)
     }
+
+    @Binds
+    fun provideTMDbRepository(api: TMDbApi): TMDbRequests {
+        return TMDbRequests(api)
+    }
+
 }

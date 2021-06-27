@@ -5,9 +5,12 @@ import ilya.khrushchev.core_network.data.Person
 import ilya.khrushchev.core_network.data.TVShow
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
 
-class TMDbRequests (private val api: TMDbApi) {
+class TMDbRequests(
+    @Inject private val api: TMDbApi
+) {
 
     fun loadFilmById(filmId: Int): Single<Film> {
         return api
@@ -62,7 +65,6 @@ class TMDbRequests (private val api: TMDbApi) {
             .subscribeOn(Schedulers.io())
             .map { it.results }
     }
-
 
 
 }
