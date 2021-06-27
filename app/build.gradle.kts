@@ -23,7 +23,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -31,7 +31,7 @@ android {
             )
         }
 
-        getByName("debug") {
+        debug {
             isMinifyEnabled = false
         }
     }
