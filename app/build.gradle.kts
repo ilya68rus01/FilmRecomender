@@ -46,14 +46,18 @@ android {
 
 dependencies {
 
+    implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":repo")))
+
     implementation(AppDependencies.appLibraries)
+
     testImplementation(AppDependencies.testLibraries)
     annotationProcessor(AppDependencies.roomAnnotation)
 
     // dagger
     kapt("com.google.dagger:dagger-compiler:${Versions.dagger}")
     implementation("com.google.dagger:dagger:${Versions.dagger}")
-    kapt( "com.google.dagger:dagger-android-processor:${Versions.dagger}")
+    kapt("com.google.dagger:dagger-android-processor:${Versions.dagger}")
     implementation("com.google.dagger:dagger-android:${Versions.dagger}")
     implementation("com.google.dagger:dagger-android-support:${Versions.dagger}")
 
