@@ -3,18 +3,19 @@ package khrushchev.ilya.filmrecomender.di.components
 import com.example.core.di.ApplicationProvider
 import com.example.core.di.MainToolsProvider
 import com.example.core.di.RepoProvider
+import com.example.core.di.ShowNewFilmsProvider
 import com.example.repo.di.RepoComponent
+import com.example.shownew.di.component.ShowNewExportComponent
 import dagger.Component
 import khrushchev.ilya.filmrecomender.Application
 import khrushchev.ilya.filmrecomender.di.ApplicationScope
-import khrushchev.ilya.filmrecomender.di.modules.ViewModelModule
 
 @ApplicationScope
 @Component(
-    modules = [ViewModelModule::class],
     dependencies = [
         MainToolsProvider::class,
-        RepoProvider::class
+        RepoProvider::class,
+        ShowNewFilmsProvider::class
     ]
 )
 interface ApplicationComponent : ApplicationProvider {
@@ -30,9 +31,13 @@ interface ApplicationComponent : ApplicationProvider {
                 val repoProvider = RepoComponent.Initializer
                     .init(mainToolsProvider)
 
+                val showNewFilmsProvider = ShowNewExportComponent.Initializer
+                    .init(mainToolsProvider)
+
                 return DaggerApplicationComponent.builder()
                     .mainToolsProvider(mainToolsProvider)
                     .repoProvider(repoProvider)
+                    .showNewFilmsProvider(showNewFilmsProvider)
                     .build()
             }
         }
