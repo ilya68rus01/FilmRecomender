@@ -1,10 +1,7 @@
-package khrushchev.ilya.filmrecomender.di
+package com.example.shownew.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
-import java.lang.annotation.Documented
-import java.lang.annotation.ElementType
-import java.lang.annotation.RetentionPolicy
 import kotlin.reflect.KClass
 
 @MustBeDocumented

@@ -2,17 +2,27 @@ package com.example.shownew
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.data.Film
 
 class FilmsAdapter : RecyclerView.Adapter<CardViewFilmViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewFilmViewHolder {
-        TODO("Not yet implemented")
+    private val newFilms = mutableListOf<Film>()
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): CardViewFilmViewHolder = CardViewFilmViewHolder(parent)
+
+    override fun onBindViewHolder(
+        holder: CardViewFilmViewHolder,
+        position: Int
+    ) = holder.bindView(newFilms[position])
+
+    fun setNewFilms(films: List<Film>) {
+        if (newFilms.isNotEmpty())
+            newFilms.clear()
+        newFilms.addAll(films)
+        notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: CardViewFilmViewHolder, position: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = newFilms.size
 }
