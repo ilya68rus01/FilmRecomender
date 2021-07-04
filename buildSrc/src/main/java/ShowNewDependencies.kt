@@ -1,5 +1,3 @@
-import org.gradle.api.artifacts.dsl.DependencyHandler
-
 object ShowNewDependencies {
     //std lib
     val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
@@ -12,12 +10,14 @@ object ShowNewDependencies {
     val cardView = "androidx.cardview:cardview:1.0.0"
     val material = "com.google.android.material:material:1.3.0"
 
+    val lifeCycleKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
     val showNewLibraries = listOf(
         stdLib,
         appcompat,
         coreKtx,
         constraintLayout,
         cardView,
-        material
+        material,
+        lifeCycleKtx
     )
 }
