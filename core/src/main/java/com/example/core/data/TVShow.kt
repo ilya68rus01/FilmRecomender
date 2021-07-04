@@ -1,4 +1,4 @@
-package com.example.network.data
+package com.example.core.data
 
 data class TVShow(
     val backdrop_path: String?,

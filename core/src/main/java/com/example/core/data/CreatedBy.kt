@@ -1,4 +1,4 @@
-package com.example.network.data
+package com.example.core.data
 
 data class CreatedBy(
     val id: Int,

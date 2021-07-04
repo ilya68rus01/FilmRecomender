@@ -1,4 +1,4 @@
-package com.example.network.data
+package com.example.core.data
 
 data class ProductionCountries(
     val iso_3166_1: String,
