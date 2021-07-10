@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(NetworkDependencies.networkLibraries)
+    implementation(project(mapOf("path" to ":core")))
     testImplementation(NetworkDependencies.testLibraries)
     androidTestImplementation(NetworkDependencies.androidTestLibraries)
     kapt(NetworkDependencies.kaptLibraries)
