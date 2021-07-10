@@ -8,6 +8,8 @@ interface NetworkProvider {
 }
 
 @Component(
-    modules = [NetworkModule::class]
+    modules = [
+        NetworkModule::class
+    ]
 )
 interface NetworkComponent : NetworkProvider
