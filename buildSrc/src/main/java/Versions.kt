@@ -15,6 +15,7 @@ object Versions {
     val fragment = "1.3.4"
     val retrofit = "2.1.0"
     val gson = "2.8.7"
+    val material = "1.3.0"
 
     //test
     val junit = "4.12"
