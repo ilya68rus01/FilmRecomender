@@ -6,6 +6,7 @@ import com.example.core.actions.ShowNewFilmsAction
 
 interface ApplicationProvider :
     MainToolsProvider,
+    ShowNewFilmsProvider,
     RepoProvider
 
 interface MainToolsProvider {
