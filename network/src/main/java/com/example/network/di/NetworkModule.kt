@@ -2,7 +2,7 @@ package com.example.network.di
 
 import com.example.network.KeyInterceptor
 import com.example.network.TMDbApi
-import com.example.network.TMDbRequests
+import com.example.network.TMDbRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -45,8 +45,8 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideTMDbRepository(api: TMDbApi): TMDbRequests {
-        return TMDbRequests(api)
+    fun provideTMDbRepository(api: TMDbApi): TMDbRepository {
+        return TMDbRepository(api)
     }
 
     @Provides

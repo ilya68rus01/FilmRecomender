@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 
-class TMDbRequests @Inject constructor(
+class TMDbRepository @Inject constructor(
     val api: TMDbApi
 ) {
 
