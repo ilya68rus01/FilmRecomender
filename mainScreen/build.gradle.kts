@@ -42,7 +42,6 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":app")))
     implementation(MainScreenDependencies.mainScreenLibraries)
     testImplementation(MainScreenDependencies.testLibraries)
     androidTestImplementation(MainScreenDependencies.testLibraries)

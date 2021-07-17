@@ -45,13 +45,11 @@ android {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":repo")))
-    implementation(project(mapOf("path" to ":shownew")))
-
     implementation(AppDependencies.appLibraries)
     testImplementation(AppDependencies.testLibraries)
     annotationProcessor(AppDependencies.roomAnnotation)
     kapt(AppDependencies.kapt)
-
+    implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":repo")))
+    implementation(project(mapOf("path" to ":shownew")))
 }

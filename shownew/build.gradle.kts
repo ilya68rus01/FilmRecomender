@@ -46,12 +46,7 @@ android {
 }
 
 dependencies {
-
     implementation(ShowNewDependencies.showNewLibraries)
-    implementation(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":app")))
-    // dagger
     kapt(ShowNewDependencies.kaptLibraries)
-
-
+    implementation(project(mapOf("path" to ":core")))
 }

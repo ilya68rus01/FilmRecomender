@@ -68,10 +68,6 @@ object AppDependencies {
     private val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     private val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 
-    val annotation = arrayListOf<String>().apply {
-        add(roomAnnotation)
-    }
-
     val appLibraries = listOf(
         stdLib,
         coreKtx,
@@ -109,7 +105,8 @@ object AppDependencies {
 
     val kapt = listOf(
         daggerCompiler,
-        daggerProcessor
+        daggerProcessor,
+        roomAnnotation
     )
 }
 
