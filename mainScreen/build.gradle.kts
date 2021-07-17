@@ -40,13 +40,7 @@ android {
 }
 
 dependencies {
-    implementation(AppDependencies.appLibraries)
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
-
-    testImplementation(AppDependencies.testLibraries)
-    androidTestImplementation(AppDependencies.testLibraries)
+    implementation(MainScreenDependencies.mainScreenLibraries)
+    testImplementation(MainScreenDependencies.testLibraries)
+    androidTestImplementation(MainScreenDependencies.testLibraries)
 }
