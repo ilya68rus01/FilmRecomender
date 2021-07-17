@@ -1,2 +1,3 @@
-include (":app", ":network", ":shownew",":core", ":repo")
+include(":app", ":shownew", ":core", ":network", ":repo")
 rootProject.name = "FilmRecomender"
+include(":mainScreen")

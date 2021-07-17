@@ -1,10 +1,16 @@
 package com.example.core.di
 
+import com.example.core.App
 import com.example.core.TMDbRepo.TMDbRepo
 
 interface ApplicationProvider :
-        RepoProvider
+    MainToolsProvider,
+    RepoProvider
+
+interface MainToolsProvider {
+    fun provideContext(): App
+}
 
 interface RepoProvider {
-    fun provideTMDbRepo() : TMDbRepo
+    fun provideTMDbRepo(): TMDbRepo
 }

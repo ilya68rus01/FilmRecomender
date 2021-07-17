@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
+    id("kotlin-android")
 }
 
 android {
@@ -12,7 +11,8 @@ android {
         minSdk = AppConfig.minSdk
         targetSdk = AppConfig.targetSdk
 
-        testInstrumentationRunner = AppConfig.androidTestInstrumentation
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -31,16 +31,16 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 dependencies {
-    implementation(CoreDependencies.coreLibraries)
-    kapt(CoreDependencies.coreKapt)
-
-    testImplementation(CoreDependencies.testLibraries)
-    androidTestImplementation(CoreDependencies.androidTestLibraries)
+    implementation(MainScreenDependencies.mainScreenLibraries)
+    testImplementation(MainScreenDependencies.testLibraries)
+    androidTestImplementation(MainScreenDependencies.testLibraries)
 }
