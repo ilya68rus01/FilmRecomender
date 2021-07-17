@@ -3,6 +3,8 @@ object NetworkDependencies {
     private val kotlinCore = "androidx.core:core-ktx:${Versions.kotlin}"
     private val material = "com.google.android.material:material:${Versions.material}"
 
+    private val appCompat = "androidx.appcompat:appcompat:1.3.0"
+
     private val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     private val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     private val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
@@ -26,6 +28,7 @@ object NetworkDependencies {
     private val okHttp = "com.squareup.okhttp3:okhttp:4.9.0"
 
     val networkLibraries = listOf(
+        appCompat,
         stdLib,
         retrofit,
         gson,
