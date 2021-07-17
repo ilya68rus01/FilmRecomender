@@ -53,6 +53,7 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("io.reactivex.rxjava3:rxjava:3.0.0")
     implementation("androidx.fragment:fragment-ktx:1.3.2")
+    implementation(project(mapOf("path" to ":app")))
     // dagger
     kapt("com.google.dagger:dagger-compiler:${Versions.dagger}")
     implementation("com.google.dagger:dagger:${Versions.dagger}")

@@ -4,10 +4,16 @@ import com.example.core.di.ApplicationProvider
 import com.example.shownew.NewFilmsFragment
 import com.example.shownew.di.module.ViewModelModule
 import dagger.Component
+import khrushchev.ilya.filmrecomender.di.ApplicationScope
 
+@ApplicationScope
 @Component(
-    dependencies = arrayOf(ApplicationProvider::class),
-    modules = arrayOf(ViewModelModule::class)
+    dependencies = [
+        ApplicationProvider::class
+    ],
+    modules = [
+        ViewModelModule::class
+    ]
 )
 interface ShowNewComponent {
     fun inject(fragment: NewFilmsFragment)
