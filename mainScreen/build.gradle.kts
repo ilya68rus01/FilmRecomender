@@ -48,6 +48,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":app")))
 
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.testLibraries)
