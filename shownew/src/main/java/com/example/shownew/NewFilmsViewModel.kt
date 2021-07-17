@@ -12,7 +12,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class NewFilmsViewModel @Inject constructor(
-    val repo: TMDbRepo
+    private val repo: TMDbRepo
 ) : ViewModel() {
 
     private val _newFilmsLiveData = liveData<Page<Film>> {
