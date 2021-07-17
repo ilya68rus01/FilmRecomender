@@ -23,6 +23,8 @@ object NetworkDependencies {
     private val androidJunit = "androidx.test.ext:junit:1.1.2"
     private val espresso = "androidx.test.espresso:espresso-core:3.3.0"
 
+    private val okHttp = "com.squareup.okhttp3:okhttp:4.9.0"
+
     val networkLibraries = listOf(
         stdLib,
         retrofit,
@@ -33,7 +35,8 @@ object NetworkDependencies {
         adapter,
         kotlinCore,
         material,
-        dagger
+        dagger,
+        okHttp
     )
 
     val androidTestLibraries = listOf(
