@@ -61,30 +61,40 @@ object AppDependencies {
     // Testing Navigation
     val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
 
+    private val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    private val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
+    private val daggerSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+
+    private val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    private val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+
     val annotation = arrayListOf<String>().apply {
         add(roomAnnotation)
     }
 
-    val appLibraries = arrayListOf<String>().apply {
-        add(stdLib)
-        add(coreKtx)
-        add(appcompat)
-        add(constraintLayout)
-        add(cardView)
-        add(material)
-        add(navigationFragment)
-        add(navigationUiKtx)
-        add(navigationFeatures)
-        add(navigationCompose)
-        add(paging)
-        add(pagingRx)
-        add(pagingCompose)
-        add(rxAndroid)
-        add(rxJava)
-        add(room)
-        add(roomRx)
-        add(fragmentKtx)
-    }
+    val appLibraries = listOf(
+        stdLib,
+        coreKtx,
+        appcompat,
+        constraintLayout,
+        cardView,
+        material,
+        navigationFragment,
+        navigationUiKtx,
+        navigationFeatures,
+        navigationCompose,
+        paging,
+        pagingRx,
+        pagingCompose,
+        rxAndroid,
+        rxJava,
+        room,
+        roomRx,
+        fragmentKtx,
+        dagger,
+        daggerAndroid,
+        daggerSupport
+    )
 
     val androidTestLibraries = arrayListOf<String>().apply {
         add(extJUnit)
@@ -96,6 +106,11 @@ object AppDependencies {
     val testLibraries = arrayListOf<String>().apply {
         add(junit)
     }
+
+    val kapt = listOf(
+        daggerCompiler,
+        daggerProcessor
+    )
 }
 
 //util functions for adding the different type dependencies from build.gradle file
