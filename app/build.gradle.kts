@@ -50,6 +50,7 @@ dependencies {
     implementation(project(mapOf("path" to ":repo")))
 
     implementation(AppDependencies.appLibraries)
+    implementation(project(mapOf("path" to ":shownew")))
 
     testImplementation(AppDependencies.testLibraries)
     annotationProcessor(AppDependencies.roomAnnotation)

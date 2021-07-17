@@ -1,9 +1,9 @@
 package com.example.network
 
-import com.example.network.data.Film
-import com.example.network.data.Page
-import com.example.network.data.Person
-import com.example.network.data.TVShow
+import com.example.core.data.Film
+import com.example.core.data.Page
+import com.example.core.data.Person
+import com.example.core.data.TVShow
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

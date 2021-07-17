@@ -1,4 +1,4 @@
-package com.example.network.data
+package com.example.core.data
 
 import com.example.core.empty
 

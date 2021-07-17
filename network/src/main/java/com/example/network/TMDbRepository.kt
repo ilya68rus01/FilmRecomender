@@ -1,8 +1,8 @@
 package com.example.network
 
-import com.example.network.data.Film
-import com.example.network.data.Person
-import com.example.network.data.TVShow
+import com.example.core.data.Film
+import com.example.core.data.Person
+import com.example.core.data.TVShow
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject

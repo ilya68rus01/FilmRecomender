@@ -1,26 +1,20 @@
 plugins {
-    id ("com.android.application")
-    kotlin("android")
+    id("com.android.library")
+    id("kotlin-android")
     kotlin("kapt")
 }
 
 
 android {
-    compileSdkVersion(AppConfig.compileSdk)
-    buildToolsVersion(AppConfig.buildToolsVersion)
-
-    viewBinding {
-        android.buildFeatures.viewBinding = true
-    }
+    compileSdk = AppConfig.compileSdk
+    buildToolsVersion = AppConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId = "khrushchev.ilya.filmrecomender"
-        minSdkVersion(AppConfig.minSdk)
-        targetSdkVersion(AppConfig.targetSdk)
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
 
-        testInstrumentationRunner = AppConfig.androidTestInstrumentation
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -37,23 +31,27 @@ android {
         }
     }
 
-
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 dependencies {
 
     implementation(ShowNewDependencies.showNewLibraries)
+    implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":app")))
     // dagger
-    kapt("com.google.dagger:dagger-compiler:${Versions.dagger}")
-    implementation("com.google.dagger:dagger:${Versions.dagger}")
-    kapt( "com.google.dagger:dagger-android-processor:${Versions.dagger}")
-    implementation("com.google.dagger:dagger-android:${Versions.dagger}")
-    implementation("com.google.dagger:dagger-android-support:${Versions.dagger}")
+    kapt(ShowNewDependencies.kaptLibraries)
 
 
 }

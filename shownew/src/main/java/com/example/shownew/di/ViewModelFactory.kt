@@ -1,4 +1,4 @@
-package khrushchev.ilya.filmrecomender.di
+package com.example.shownew.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
