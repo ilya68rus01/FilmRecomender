@@ -44,6 +44,13 @@ object MainScreenDependencies {
     // Testing Navigation
     private val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
 
+    private val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    private val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
+    private val daggerSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+
+    private val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    private val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+
     val mainScreenLibraries = listOf(
         material,
         constraint,
@@ -58,7 +65,10 @@ object MainScreenDependencies {
         room,
         roomAnnotation,
         roomRx,
-        fragmentKtx
+        fragmentKtx,
+        dagger,
+        daggerAndroid,
+        daggerSupport
     )
 
     val androidTestLibraries = listOf(
@@ -69,5 +79,10 @@ object MainScreenDependencies {
 
     val testLibraries = listOf(
         junit
+    )
+
+    val kapt = listOf(
+        daggerCompiler,
+        daggerProcessor
     )
 }
