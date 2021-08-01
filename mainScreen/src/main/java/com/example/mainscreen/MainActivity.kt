@@ -17,6 +17,14 @@ class MainActivity : AppCompatActivity() {
         inject()
     }
 
+    override fun onStart() {
+        super.onStart()
+        val fragment = showNewFilmsAction.getNewFilmsFragment(applicationContext)
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container,fragment)
+            .commit()
+    }
+
     private fun inject() {
         MainActivityComponent.Initializer
             .init((applicationContext as App).getAppComponent())
