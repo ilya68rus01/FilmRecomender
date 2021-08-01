@@ -63,7 +63,7 @@ object MainScreenDependencies {
         rxAndroid,
         rxJava,
         room,
-        roomAnnotation,
+//        roomAnnotation,
         roomRx,
         fragmentKtx,
         dagger,

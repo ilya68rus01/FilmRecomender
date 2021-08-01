@@ -36,8 +36,6 @@ android {
         }
     }
 
-
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -46,6 +44,7 @@ android {
 
 dependencies {
     implementation(AppDependencies.appLibraries)
+    implementation(project(mapOf("path" to ":mainScreen")))
     testImplementation(AppDependencies.testLibraries)
     annotationProcessor(AppDependencies.roomAnnotation)
     kapt(AppDependencies.kapt)
