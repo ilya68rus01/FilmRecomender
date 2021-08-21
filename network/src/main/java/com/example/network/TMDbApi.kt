@@ -12,7 +12,7 @@ import retrofit2.http.Query
 
 interface TMDbApi {
 
-    @GET("https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg")
+    @GET("https://image.tmdb.org/t/p/w500/21M3oZXEuWzO2lURpbLvulxDxaK.jpg")
     fun getImage(): Single<Unit>
 
     @GET("/movie/{id}?language=ru")
@@ -24,8 +24,8 @@ interface TMDbApi {
     @GET("/movie/top_rated?language=ru&page={page}")
     fun getTopRated(@Path("page") page: Int): Single<Page<Film>>
 
-    @GET("/movie/upcoming?language=ru&page={page}")
-    fun getUpComing(@Path("page") page: Int): Single<Page<Film>>
+    @GET("3/movie/upcoming?language=ru&page=pageNumber")
+    fun getUpComing(@Query("pageNumber") page: Int): Single<Page<Film>>
 
     @GET("/person/{id}?language=ru")
     fun getPersonById(@Path("id") id: Int): Single<Person>

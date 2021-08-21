@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-private val TMDB_BASE_URL = "https://api.themoviedb.org/3"
+private val TMDB_BASE_URL = "https://api.themoviedb.org/"
 
 @Module
 class NetworkModule {

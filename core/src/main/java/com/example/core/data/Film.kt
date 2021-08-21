@@ -1,5 +1,6 @@
 package com.example.core.data
 
+import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class Film(
@@ -7,7 +8,7 @@ data class Film(
     private val backdrop_path: String,
     private val belongs_to_collection: String?,
     val budget: Int,
-    val genres: List<Genres>,
+    @SerializedName("genre_ids") val genres: List<Int>,
     val homepage: String,
     val id: Int,
     val imdb_id: String,

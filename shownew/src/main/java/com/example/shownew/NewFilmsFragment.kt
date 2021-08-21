@@ -25,7 +25,7 @@ class NewFilmsFragment : Fragment() {
 
     fun inject() {
         ShowNewComponent.Initializer
-            .init((context as App).getAppComponent())
+            .init((context?.applicationContext as App).getAppComponent())
             .inject(this@NewFilmsFragment)
     }
 
@@ -41,6 +41,7 @@ class NewFilmsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.newsFilmsRecycler.adapter = adapter
         viewModel.newFilmsLiveData.observe(viewLifecycleOwner, this::updateUi)
         viewModel.getNewFilms(1)
     }

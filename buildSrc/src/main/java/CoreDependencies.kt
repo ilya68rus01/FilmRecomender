@@ -17,6 +17,7 @@ object CoreDependencies {
 
     private val androidJunit = "androidx.test.ext:junit:1.1.2"
     private val espresso = "androidx.test.espresso:espresso-core:3.3.0"
+    private val gson = "com.google.code.gson:gson:${Versions.gsonVersions}"
 
     val coreLibraries = listOf(
         coreKtx,
@@ -27,7 +28,8 @@ object CoreDependencies {
         kotlinCore,
         dagger,
         daggerAndroid,
-        daggerAndroidSup
+        daggerAndroidSup,
+        gson
     )
 
     val coreKapt = listOf(

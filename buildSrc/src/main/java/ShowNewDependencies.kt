@@ -24,6 +24,12 @@ object ShowNewDependencies {
     private val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     private val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 
+    private val navigation = "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    private val navigationUi = "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+
+    private val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+
 
     val showNewLibraries = listOf(
         stdLib,
@@ -39,7 +45,10 @@ object ShowNewDependencies {
         fragments,
         dagger,
         daggerAndroid,
-        daggerSupport
+        daggerSupport,
+        navigation,
+        navigationUi,
+        picasso
     )
 
     val kaptLibraries = listOf(

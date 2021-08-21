@@ -43,6 +43,7 @@ android {
 dependencies {
     implementation(project(mapOf("path" to ":core")))
     implementation(MainScreenDependencies.mainScreenLibraries)
+    implementation(project(mapOf("path" to ":shownew")))
     testImplementation(MainScreenDependencies.testLibraries)
     androidTestImplementation(MainScreenDependencies.testLibraries)
     kapt(MainScreenDependencies.kapt)

@@ -21,4 +21,6 @@ object Versions {
     val junit = "4.12"
     val extJunit = "1.1.2"
     val espresso = "3.3.0"
+    val gsonVersions = "2.8.5"
+    val picasso = "2.5.2"
 }

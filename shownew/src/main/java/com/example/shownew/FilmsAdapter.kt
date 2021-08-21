@@ -10,18 +10,19 @@ class FilmsAdapter : RecyclerView.Adapter<CardViewFilmViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CardViewFilmViewHolder = CardViewFilmViewHolder(parent)
+    ): CardViewFilmViewHolder {
+        return CardViewFilmViewHolder(parent)
+    }
 
-    override fun onBindViewHolder(
-        holder: CardViewFilmViewHolder,
-        position: Int
-    ) = holder.bindView(newFilms[position])
+    override fun onBindViewHolder(holder: CardViewFilmViewHolder, position: Int) {
+        holder.bindView(newFilms[position])
+    }
 
     fun setNewFilms(films: List<Film>) {
         if (newFilms.isNotEmpty())
             newFilms.clear()
         newFilms.addAll(films)
-        notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = newFilms.size
