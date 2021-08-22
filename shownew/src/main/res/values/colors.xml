@@ -10,4 +10,6 @@
     <color name="bronze">#cd7f32</color>
     <color name="green">#7cfc00</color>
     <color name="green2">#34c924</color>
+    <color name="grey_80_alpha">#CC323131</color>
+    <color name="white_80_alpha">#CCFFFFFF</color>
 </resources>
