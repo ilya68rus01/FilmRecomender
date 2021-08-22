@@ -6,4 +6,5 @@ import io.reactivex.rxjava3.core.Single
 
 interface TMDbRepo {
     fun getNewFilms(page: Int): Single<Page<Film>>
+    fun getPopular(page: Int): Single<Page<Film>>
 }

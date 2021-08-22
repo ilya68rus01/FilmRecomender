@@ -51,6 +51,6 @@ class NewFilmsFragment : Fragment() {
         _binding = null
     }
 
-    private fun updateUi(films: Page<Film>) =
-        adapter.setNewFilms(films.results)
+    private fun updateUi(films: List<Film>) =
+        adapter.setNewFilms(films)
 }

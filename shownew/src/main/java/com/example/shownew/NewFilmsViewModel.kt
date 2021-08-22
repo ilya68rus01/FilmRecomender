@@ -15,12 +15,19 @@ class NewFilmsViewModel @Inject constructor(
     private val repo: TMDbRepo
 ) : ViewModel() {
 
-    private val _newFilmsLiveData = liveData<Page<Film>> {
+    private val _newFilmsLiveData = liveData<List<Film>> {
         repo.getNewFilms(1)
             .subscribeOn(Schedulers.io())
             .blockingGet()
     } as MutableLiveData
     val newFilmsLiveData get() = _newFilmsLiveData
+
+    private val _popularFilmsLiveData = liveData<List<Film>> {
+        repo.getPopular(1)
+            .subscribeOn(Schedulers.io())
+            .blockingGet()
+    } as MutableLiveData
+    val popularFilmsLiveData get() = _popularFilmsLiveData
 
     private val disposable: CompositeDisposable = CompositeDisposable()
 
@@ -28,7 +35,17 @@ class NewFilmsViewModel @Inject constructor(
         repo.getNewFilms(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { newFilms -> _newFilmsLiveData.value = newFilms }
+            .subscribe { newFilms -> _newFilmsLiveData.value = newFilms.results }
+            .let(disposable::add)
+    }
+
+    fun getPopularFilms(page: Int) {
+        repo.getPopular(page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { popularFilms ->
+                _popularFilmsLiveData.value = popularFilms.results
+            }
             .let(disposable::add)
     }
 }

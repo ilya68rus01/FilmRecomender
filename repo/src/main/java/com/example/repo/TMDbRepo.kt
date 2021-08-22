@@ -8,8 +8,11 @@ import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
 class TMDbRepoImpl @Inject constructor(
-    val client: TMDbApi,
+    private val client: TMDbApi,
 ) : TMDbRepo {
     override fun getNewFilms(page: Int): Single<Page<Film>> =
         client.getUpComing(page)
+
+    override fun getPopular(page: Int): Single<Page<Film>> =
+        client.getPopular(page)
 }

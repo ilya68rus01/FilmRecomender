@@ -18,8 +18,8 @@ interface TMDbApi {
     @GET("/movie/{id}?language=ru")
     fun getFilm(@Path("id") filmId: Int): Single<Film>
 
-    @GET("/movie/popular?language=ru&page={page}")
-    fun getPopular(@Path("page") page: Int): Single<Page<Film>>
+    @GET("/movie/popular?language=ru&page=pageNumber")
+    fun getPopular(@Query("pageNumber") page: Int): Single<Page<Film>>
 
     @GET("/movie/top_rated?language=ru&page={page}")
     fun getTopRated(@Path("page") page: Int): Single<Page<Film>>
