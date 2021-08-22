@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.core.App
 import com.example.core.data.Film
-import com.example.core.data.Page
 import com.example.shownew.databinding.FragmentNewFilmsBinding
 import com.example.shownew.di.ViewModelFactory
 import com.example.shownew.di.component.ShowNewComponent
@@ -21,7 +20,7 @@ class NewFilmsFragment : Fragment() {
     private var _binding: FragmentNewFilmsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: NewFilmsViewModel by viewModels { providerFactory }
-    private val adapter = FilmsAdapter()
+    private val newFilmsAdapter = FilmsAdapter<CardViewFilmViewHolder>()
 
     fun inject() {
         ShowNewComponent.Initializer
@@ -41,7 +40,7 @@ class NewFilmsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.noveltyGroup.newsFilmsRecycler.adapter = adapter
+        binding.noveltyGroup.newsFilmsRecycler.adapter = newFilmsAdapter
         viewModel.newFilmsLiveData.observe(viewLifecycleOwner, this::updateUi)
         viewModel.getNewFilms(1)
     }
@@ -52,5 +51,5 @@ class NewFilmsFragment : Fragment() {
     }
 
     private fun updateUi(films: List<Film>) =
-        adapter.setNewFilms(films)
+        newFilmsAdapter.setNewFilms(films)
 }

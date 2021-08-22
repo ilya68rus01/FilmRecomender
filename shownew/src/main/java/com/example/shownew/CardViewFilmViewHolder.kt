@@ -13,7 +13,7 @@ import java.util.*
 
 class CardViewFilmViewHolder(
     private val binding: NewFilmsElementBinding
-) : RecyclerView.ViewHolder(binding.root) {
+) :BaseViewHolder(binding.root) {
 
     constructor(parent: ViewGroup) : this(
         NewFilmsElementBinding.inflate(
@@ -23,7 +23,7 @@ class CardViewFilmViewHolder(
         )
     )
 
-    fun bindView(film: Film) {
+    override fun bindView(film: Film) {
         binding.filmName.text = film.title
         val average = film.vote_average
         binding.rate.text = average.toString()
