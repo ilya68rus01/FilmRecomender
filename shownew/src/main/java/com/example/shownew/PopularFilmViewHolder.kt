@@ -1,0 +1,43 @@
+package com.example.shownew
+
+import android.graphics.Color
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import com.example.core.data.Film
+import com.example.shownew.databinding.NewFilmsElementBinding
+import com.example.shownew.databinding.PopularItemBinding
+import com.squareup.picasso.Picasso
+import java.util.*
+
+class PopularFilmViewHolder(
+    private val binding: PopularItemBinding
+) :BaseViewHolder(binding.root) {
+
+    constructor(parent: ViewGroup) : this(
+        PopularItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+    )
+
+    override fun bindView(film: Film) {
+        binding.filmName.text = film.title
+        val average = film.vote_average
+        binding.rate.text = average.toString()
+        when {
+            average < 4f -> binding.rate.setBackgroundColor(Color.RED)
+            average > 7f -> binding.rate.setBackgroundColor(binding.root.context.getColor(R.color.green2))
+            (average > 5f) && (average<7f) -> binding.rate.setBackgroundColor(binding.root.context.getColor(R.color.green))
+            else -> binding.rate.setBackgroundColor(Color.YELLOW)
+        }
+        Picasso.with(binding.root.context)
+            .load("https://image.tmdb.org/t/p/w500" + film.poster_path)
+            .error(R.drawable.ic_no_image)
+            .fit()
+            .into(binding.poster)
+        binding.poster.scaleType = ImageView.ScaleType.CENTER_CROP
+    }
+}
