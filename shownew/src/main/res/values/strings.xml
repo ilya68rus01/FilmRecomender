@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShowNew</string>
+    <string name="app_name">Film Recommender</string>
     <string name="new_films">Новинки</string>
     <string name="all_new_film">Все</string>
 </resources>

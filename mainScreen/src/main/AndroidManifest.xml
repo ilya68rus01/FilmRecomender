@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mainscreen">
 
-    <application>
-       <activity android:name="com.example.mainscreen.MainActivity">
+    <application
+        android:label="@string/app_name">
+       <activity android:name="com.example.mainscreen.MainActivity"
+           android:exported="true">
            <intent-filter>
                <action android:name="android.intent.action.MAIN"/>
                <category android:name="android.intent.category.LAUNCHER"/>
