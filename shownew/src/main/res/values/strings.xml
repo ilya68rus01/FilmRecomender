@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Film Recommender</string>
     <string name="new_films">Новинки</string>
-    <string name="all_new_film">Все</string>
+    <string name="all_film">Все</string>
+    <string name="popular">Интересное</string>
 </resources>

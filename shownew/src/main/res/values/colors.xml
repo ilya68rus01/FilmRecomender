@@ -12,4 +12,6 @@
     <color name="green2">#34c924</color>
     <color name="grey_80_alpha">#CC323131</color>
     <color name="white_80_alpha">#CCFFFFFF</color>
+    <color name="metal">#c4c9cf</color>
+    <color name="black_blue">#161a1e</color>
 </resources>

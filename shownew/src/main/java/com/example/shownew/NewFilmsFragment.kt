@@ -41,7 +41,7 @@ class NewFilmsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.newsFilmsRecycler.adapter = adapter
+        binding.noveltyGroup.newsFilmsRecycler.adapter = adapter
         viewModel.newFilmsLiveData.observe(viewLifecycleOwner, this::updateUi)
         viewModel.getNewFilms(1)
     }

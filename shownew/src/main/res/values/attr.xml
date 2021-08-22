@@ -2,4 +2,5 @@
 <resources>
     <attr name="textColor" format="color|reference"/>
     <attr name="backgroundShapeColor" format="color|reference"/>
+    <attr name="unbackgroundedTextColor" format="color|reference"/>
 </resources>
