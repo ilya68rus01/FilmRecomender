@@ -11,6 +11,6 @@ import com.example.shownew.databinding.NewFilmsElementBinding
 import com.squareup.picasso.Picasso
 import java.util.*
 
-abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    abstract fun bindView(film: Film)
+open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    open fun bindView(film: Film) { }
 }

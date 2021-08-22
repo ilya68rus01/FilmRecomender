@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class Film(
-    private val adult: Boolean,
-    private val backdrop_path: String,
-    private val belongs_to_collection: String?,
+    val adult: Boolean,
+    val backdrop_path: String,
+    val belongs_to_collection: String?,
     val budget: Int,
     @SerializedName("genre_ids") val genres: List<Int>,
     val homepage: String,

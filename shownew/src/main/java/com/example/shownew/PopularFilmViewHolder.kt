@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.core.data.Film
 import com.example.shownew.databinding.NewFilmsElementBinding
 import com.example.shownew.databinding.PopularItemBinding
@@ -13,7 +14,7 @@ import java.util.*
 
 class PopularFilmViewHolder(
     private val binding: PopularItemBinding
-) :BaseViewHolder(binding.root) {
+) : BaseViewHolder(binding.root) {
 
     constructor(parent: ViewGroup) : this(
         PopularItemBinding.inflate(
@@ -34,7 +35,7 @@ class PopularFilmViewHolder(
             else -> binding.rate.setBackgroundColor(Color.YELLOW)
         }
         Picasso.with(binding.root.context)
-            .load("https://image.tmdb.org/t/p/w500" + film.poster_path)
+            .load("https://image.tmdb.org/t/p/w500" + film.backdrop_path)
             .error(R.drawable.ic_no_image)
             .fit()
             .into(binding.poster)

@@ -20,7 +20,12 @@ class NewFilmsFragment : Fragment() {
     private var _binding: FragmentNewFilmsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: NewFilmsViewModel by viewModels { providerFactory }
-    private val newFilmsAdapter = FilmsAdapter<CardViewFilmViewHolder>()
+    private val newFilmsAdapter = FilmsAdapter{
+        CardViewFilmViewHolder(it)
+    }
+    private val popularFilmsAdapter = FilmsAdapter{
+        PopularFilmViewHolder(it)
+    }
 
     fun inject() {
         ShowNewComponent.Initializer
@@ -41,8 +46,14 @@ class NewFilmsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.noveltyGroup.newsFilmsRecycler.adapter = newFilmsAdapter
+        binding.popularFroup.popularFilmsRecycler.adapter = popularFilmsAdapter
         viewModel.newFilmsLiveData.observe(viewLifecycleOwner, this::updateUi)
-        viewModel.getNewFilms(1)
+        viewModel.popularFilmsLiveData.observe(viewLifecycleOwner, this::updatePopular)
+        viewModel.updateData()
+    }
+
+    private fun updatePopular(films: List<Film>) {
+        popularFilmsAdapter.setNewFilms(films)
     }
 
     override fun onDestroy() {

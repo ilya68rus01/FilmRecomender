@@ -13,7 +13,7 @@ import java.util.*
 
 class CardViewFilmViewHolder(
     private val binding: NewFilmsElementBinding
-) :BaseViewHolder(binding.root) {
+) : BaseViewHolder(binding.root) {
 
     constructor(parent: ViewGroup) : this(
         NewFilmsElementBinding.inflate(
@@ -30,7 +30,11 @@ class CardViewFilmViewHolder(
         when {
             average < 4f -> binding.rate.setBackgroundColor(Color.RED)
             average > 7f -> binding.rate.setBackgroundColor(binding.root.context.getColor(R.color.green2))
-            (average > 5f) && (average<7f) -> binding.rate.setBackgroundColor(binding.root.context.getColor(R.color.green))
+            (average > 5f) && (average < 7f) -> binding.rate.setBackgroundColor(
+                binding.root.context.getColor(
+                    R.color.green
+                )
+            )
             else -> binding.rate.setBackgroundColor(Color.YELLOW)
         }
         Picasso.with(binding.root.context)

@@ -1,5 +1,6 @@
 package com.example.shownew
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
@@ -16,26 +17,32 @@ class NewFilmsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _newFilmsLiveData = liveData<List<Film>> {
-        repo.getNewFilms(1)
-            .subscribeOn(Schedulers.io())
-            .blockingGet()
+        emptyList<Film>()
     } as MutableLiveData
     val newFilmsLiveData get() = _newFilmsLiveData
 
     private val _popularFilmsLiveData = liveData<List<Film>> {
-        repo.getPopular(1)
-            .subscribeOn(Schedulers.io())
-            .blockingGet()
+        emptyList<Film>()
     } as MutableLiveData
     val popularFilmsLiveData get() = _popularFilmsLiveData
 
     private val disposable: CompositeDisposable = CompositeDisposable()
 
+    fun updateData() {
+        getNewFilms(1)
+        getPopularFilms(1)
+    }
+
     fun getNewFilms(page: Int) {
         repo.getNewFilms(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { newFilms -> _newFilmsLiveData.value = newFilms.results }
+            .subscribe({ newFilms ->
+                _newFilmsLiveData.value = newFilms.results
+            }, {
+                it.message?.let { it1 -> Log.d("Error", it1) }
+            }
+            )
             .let(disposable::add)
     }
 
@@ -43,9 +50,12 @@ class NewFilmsViewModel @Inject constructor(
         repo.getPopular(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { popularFilms ->
+            .subscribe({  popularFilms ->
                 _popularFilmsLiveData.value = popularFilms.results
+            }, {
+                it.message?.let { it1 -> Log.d("Error", it1) }
             }
+            )
             .let(disposable::add)
     }
 }

@@ -4,15 +4,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core.data.Film
 
-class FilmsAdapter <T : BaseViewHolder> : RecyclerView.Adapter<T>() {
+class FilmsAdapter <T : BaseViewHolder>
+constructor(
+    private val createCallback: (parent: ViewGroup) -> T
+) : RecyclerView.Adapter<T>() {
     private val newFilms = mutableListOf<Film>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): T {
-        return CardViewFilmViewHolder(parent) as T
-    }
+    ): T = createCallback.invoke(parent)
 
     override fun onBindViewHolder(holder: T, position: Int) {
         holder.bindView(newFilms[position])
@@ -22,7 +23,7 @@ class FilmsAdapter <T : BaseViewHolder> : RecyclerView.Adapter<T>() {
         if (newFilms.isNotEmpty())
             newFilms.clear()
         newFilms.addAll(films)
-        this.notifyDataSetChanged()
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = newFilms.size
