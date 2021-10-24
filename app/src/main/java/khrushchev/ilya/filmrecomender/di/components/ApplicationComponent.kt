@@ -1,42 +1,21 @@
 package khrushchev.ilya.filmrecomender.di.components
 
-import com.example.core.di.ApplicationProvider
-import com.example.core.di.MainToolsProvider
-import com.example.core.di.RepoProvider
-import com.example.core.di.ShowNewFilmsProvider
-import com.example.repo.di.RepoComponent
-import com.example.shownew.di.component.ShowNewExportComponent
+import com.example.moduleinjector.BaseFeatureApi
+import com.example.moduleinjector.BaseFeatureDependencies
 import dagger.Component
-import khrushchev.ilya.filmrecomender.Application
+import khrushchev.ilya.filmrecomender.FilmRecomenderApp
 import khrushchev.ilya.filmrecomender.di.ApplicationScope
 
 @ApplicationScope
-@Component(
-    dependencies = [
-        MainToolsProvider::class,
-        RepoProvider::class,
-        ShowNewFilmsProvider::class
-    ]
-)
-interface ApplicationComponent : ApplicationProvider {
-    fun inject(app: Application)
+@Component
+interface ApplicationComponent : BaseFeatureApi, BaseFeatureDependencies {
 
-    class Initializer private constructor() {
+    fun inject(app: FilmRecomenderApp)
+
+    class Builder {
         companion object {
-
-            fun init(app: Application): ApplicationComponent {
-                val mainToolsProvider = DaggerMainToolsComponent.factory().create(app)
-
-                val repoProvider = RepoComponent.Initializer
-                    .init(mainToolsProvider)
-
-                val showNewFilmsProvider = ShowNewExportComponent.Initializer
-                    .init(mainToolsProvider)
-
+            fun build(app: FilmRecomenderApp): ApplicationComponent {
                 return DaggerApplicationComponent.builder()
-                    .mainToolsProvider(mainToolsProvider)
-                    .repoProvider(repoProvider)
-                    .showNewFilmsProvider(showNewFilmsProvider)
                     .build()
             }
         }

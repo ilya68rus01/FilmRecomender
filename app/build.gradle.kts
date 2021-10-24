@@ -46,10 +46,11 @@ android {
 
 dependencies {
     implementation(AppDependencies.appLibraries)
+    implementation(project(mapOf("path" to ":mainScreen")))
+    implementation(project(mapOf("path" to ":moduleinjector")))
     testImplementation(AppDependencies.testLibraries)
     annotationProcessor(AppDependencies.roomAnnotation)
     kapt(AppDependencies.kapt)
     implementation(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":repo")))
     implementation(project(mapOf("path" to ":shownew")))
 }
