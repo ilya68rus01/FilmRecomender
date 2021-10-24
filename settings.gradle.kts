@@ -1,3 +1,3 @@
-include(":app", ":shownew", ":core", ":network", ":repo", ":moduleinjector")
+include(":app", ":shownew", ":core", ":moduleinjector")
 rootProject.name = "FilmRecomender"
 include(":mainScreen")

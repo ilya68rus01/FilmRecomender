@@ -1,4 +1,4 @@
-package com.example.shownew
+package com.example.shownew.ui.recycler
 
 import android.graphics.Color
 import android.view.LayoutInflater

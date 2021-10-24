@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun inject() {
-        MainActivityComponent.Initializer
-            .init((applicationContext as App).getAppComponent())
-            .inject(this@MainActivity)
+//        MainActivityComponent.Initializer
+//            .init((applicationContext as App).getAppComponent())
+//            .inject(this@MainActivity)
     }
 
 }

@@ -47,6 +47,7 @@ android {
 
 dependencies {
     implementation(ShowNewDependencies.showNewLibraries)
+    implementation(project(mapOf("path" to ":moduleinjector")))
     kapt(ShowNewDependencies.kaptLibraries)
     implementation(project(mapOf("path" to ":core")))
 }

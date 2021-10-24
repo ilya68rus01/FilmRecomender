@@ -1,4 +1,4 @@
-package com.example.shownew
+package com.example.shownew.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.core.App
 import com.example.core.data.Film
 import com.example.shownew.databinding.FragmentNewFilmsBinding
 import com.example.shownew.di.ViewModelFactory
-import com.example.shownew.di.component.ShowNewComponent
+import com.example.shownew.ui.recycler.FilmsAdapter
 import javax.inject.Inject
 
 class NewFilmsFragment : Fragment() {
@@ -39,21 +38,13 @@ class NewFilmsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNewFilmsBinding.inflate(inflater)
-        inject()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.noveltyGroup.newsFilmsRecycler.adapter = newFilmsAdapter
-        binding.popularFroup.popularFilmsRecycler.adapter = popularFilmsAdapter
-        viewModel.newFilmsLiveData.observe(viewLifecycleOwner, this::updateUi)
-        viewModel.popularFilmsLiveData.observe(viewLifecycleOwner, this::updatePopular)
-        viewModel.updateData()
-    }
-
-    private fun updatePopular(films: List<Film>) {
-        popularFilmsAdapter.setNewFilms(films)
+//        viewModel.newFilmsLiveData.observe(viewLifecycleOwner, this::updateUi)
+//        viewModel.getNewFilms(1)
     }
 
     override fun onDestroy() {
