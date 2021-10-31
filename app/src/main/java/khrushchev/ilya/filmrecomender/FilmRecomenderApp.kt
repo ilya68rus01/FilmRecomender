@@ -7,6 +7,7 @@ import com.example.moduleinjector.DependencyHolder1
 import com.example.shownew.di.ShowNewComponentHolder
 import com.example.shownew.di.ShowNewDependencies
 import khrushchev.ilya.filmrecomender.di.components.ApplicationComponent
+import khrushchev.ilya.filmrecomender.di.components.ApplicationComponent.Builder.Companion.build
 
 class FilmRecomenderApp : Application() {
 
@@ -19,6 +20,7 @@ class FilmRecomenderApp : Application() {
 
     override fun onCreate() {
         instance = this
+
         appComponent = build(this).apply {
             inject(this@FilmRecomenderApp)
         }

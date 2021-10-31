@@ -1,7 +1,7 @@
 //version constants for the Kotlin DSL dependencies
 object Versions {
     //app level
-    const val gradle = "7.1.0-alpha02"
+    const val gradle = "7.0.0"
     const val kotlin = "1.5.0"
 
     //libs
@@ -16,6 +16,8 @@ object Versions {
     val retrofit = "2.1.0"
     val gson = "2.8.7"
     val material = "1.3.0"
+    val rx = "3.0.0"
+    val cardView = "1.0.0"
 
     //test
     val junit = "4.12"
