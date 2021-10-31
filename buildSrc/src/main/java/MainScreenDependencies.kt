@@ -1,7 +1,8 @@
 object MainScreenDependencies {
 
-    private val material = "com.google.android.material:material:1.3.0"
-    private val constraint = "androidx.constraintlayout:constraintlayout:2.0.4"
+    private val material = "com.google.android.material:material:${Versions.material}"
+    private val constraint =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     private val navigationFragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     private val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
@@ -18,31 +19,22 @@ object MainScreenDependencies {
         "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigation}"
 
     //RxJava 3
-    private val rxAndroid = "io.reactivex.rxjava3:rxandroid:3.0.0"
-    private val rxJava = "io.reactivex.rxjava3:rxjava:3.0.0"
+    private val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rx}"
+    private val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rx}"
 
     //Room
     private val room = "androidx.room:room-runtime:${Versions.room}"
-    private val roomAnnotation = "androidx.room:room-compiler:${Versions.room}"
 
     // optional - RxJava3 support for Room
     private val roomRx = "androidx.room:room-rxjava3:${Versions.room}"
 
-
     // Kotlin
     private val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
-
 
     //test libs
     private val junit = "junit:junit:${Versions.junit}"
     private val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
     private val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
-
-    // Testing Fragments in Isolation
-    private val fragmetnTesting = "androidx.fragment:fragment-testing:${Versions.fragment}"
-
-    // Testing Navigation
-    private val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
 
     private val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     private val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
@@ -63,7 +55,6 @@ object MainScreenDependencies {
         rxAndroid,
         rxJava,
         room,
-//        roomAnnotation,
         roomRx,
         fragmentKtx,
         dagger,
@@ -72,7 +63,6 @@ object MainScreenDependencies {
     )
 
     val androidTestLibraries = listOf(
-        junit,
         extJUnit,
         espressoCore
     )

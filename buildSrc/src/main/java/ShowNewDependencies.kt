@@ -8,15 +8,14 @@ object ShowNewDependencies {
     private val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
-    private val cardView = "androidx.cardview:cardview:1.0.0"
-    private val material = "com.google.android.material:material:1.3.0"
+    private val cardView = "androidx.cardview:cardview:${Versions.cardView}"
+    private val material = "com.google.android.material:material:${Versions.material}"
 
     private val lifeCycleKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
-    private val support = "androidx.legacy:legacy-support-v4:1.0.0"
-    private val rxAndroid = "io.reactivex.rxjava3:rxandroid:3.0.0"
-    private val rx = "io.reactivex.rxjava3:rxjava:3.0.0"
-    private val fragments = "androidx.fragment:fragment-ktx:1.3.2"
+    private val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rx}"
+    private val rx = "io.reactivex.rxjava3:rxjava:${Versions.rx}"
+    private val fragments = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     private val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     private val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
     private val daggerSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
@@ -39,7 +38,6 @@ object ShowNewDependencies {
         cardView,
         material,
         lifeCycleKtx,
-        support,
         rxAndroid,
         rx,
         fragments,

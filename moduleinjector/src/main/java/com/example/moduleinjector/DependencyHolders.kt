@@ -1,7 +1,7 @@
 package com.example.moduleinjector
 
-abstract class DependencyHolder0<Dependencies : BaseFeatureDependencies>(
-) : BaseDependencyHolder<Dependencies> {
+abstract class DependencyHolder0<D : BaseFeatureDependencies>(
+) : BaseDependencyHolder<D> {
 
     companion object {
         operator fun <D : BaseFeatureDependencies> invoke(block: (BaseDependencyHolder<D>) -> D): BaseDependencyHolder<D> {
@@ -11,22 +11,22 @@ abstract class DependencyHolder0<Dependencies : BaseFeatureDependencies>(
         }
     }
 
-    abstract val block: (BaseDependencyHolder<Dependencies>) -> Dependencies
+    abstract val block: (BaseDependencyHolder<D>) -> D
 
-    override val dependencies: Dependencies
+    override val dependencies: D
         get() = block(this)
 }
 
-abstract class DependencyHolder1<Api1 : BaseFeatureApi, Dependencies : BaseFeatureDependencies>(
-    private val api1: Api1,
-) : BaseDependencyHolder<Dependencies> {
+abstract class DependencyHolder1<A1 : BaseFeatureApi, D : BaseFeatureDependencies>(
+    private val api1: A1,
+) : BaseDependencyHolder<D> {
 
     companion object {
-        operator fun <Api1 : BaseFeatureApi, Dependencies : BaseFeatureDependencies> invoke(
-            api1: Api1,
-            block: (BaseDependencyHolder<Dependencies>, Api1) -> Dependencies
-        ): BaseDependencyHolder<Dependencies> {
-            return object : DependencyHolder1<Api1, Dependencies>(
+        operator fun <A1 : BaseFeatureApi, D : BaseFeatureDependencies> invoke(
+            api1: A1,
+            block: (BaseDependencyHolder<D>, A1) -> D
+        ): BaseDependencyHolder<D> {
+            return object : DependencyHolder1<A1, D>(
                 api1 = api1
             ) {
                 override val block = block
@@ -34,8 +34,62 @@ abstract class DependencyHolder1<Api1 : BaseFeatureApi, Dependencies : BaseFeatu
         }
     }
 
-    abstract val block: (BaseDependencyHolder<Dependencies>, Api1) -> Dependencies
+    abstract val block: (BaseDependencyHolder<D>, A1) -> D
 
-    override val dependencies: Dependencies
+    override val dependencies: D
         get() = block(this, api1)
+}
+
+abstract class DependencyHolder2<A1 : BaseFeatureApi, A2 : BaseFeatureApi, D : BaseFeatureDependencies>(
+    private val api1: A1,
+    private val api2: A2,
+) : BaseDependencyHolder<D> {
+
+    companion object {
+        operator fun <A1 : BaseFeatureApi, A2 : BaseFeatureApi, D : BaseFeatureDependencies> invoke(
+            api1: A1,
+            api2: A2,
+            block: (BaseDependencyHolder<D>, A1, A2) -> D
+        ): BaseDependencyHolder<D> {
+            return object : DependencyHolder2<A1, A2, D>(
+                api1 = api1,
+                api2 = api2
+            ) {
+                override val block = block
+            }
+        }
+    }
+
+    abstract val block: (BaseDependencyHolder<D>, A1, A2) -> D
+
+    override val dependencies: D
+        get() = block(this, api1, api2)
+}
+
+abstract class DependencyHolder3<A1 : BaseFeatureApi, A2 : BaseFeatureApi, A3 : BaseFeatureApi, D : BaseFeatureDependencies>(
+    private val api1: A1,
+    private val api2: A2,
+    private val api3: A3,
+) : BaseDependencyHolder<D> {
+    companion object {
+        operator fun <A1 : BaseFeatureApi, A2 : BaseFeatureApi, A3 : BaseFeatureApi, D : BaseFeatureDependencies> invoke(
+            api1: A1,
+            api2: A2,
+            api3: A3,
+            block: (BaseDependencyHolder<D>, A1, A2, A3) -> D
+        ): BaseDependencyHolder<D> {
+            return object : DependencyHolder3<A1, A2, A3, D>(
+                api1 = api1,
+                api2 = api2,
+                api3 = api3,
+            ) {
+                override val block = block
+            }
+        }
+    }
+
+    abstract val block: (dependencyHolder: BaseDependencyHolder<D>, A1, A2, A3) -> D
+
+    override val dependencies: D
+        get() = block(this, api1, api2, api3)
 }

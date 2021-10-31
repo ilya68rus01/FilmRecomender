@@ -5,8 +5,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AppConfig.compileSdk)
-    buildToolsVersion(AppConfig.buildToolsVersion)
+    compileSdk = AppConfig.compileSdk
+    buildToolsVersion = AppConfig.buildToolsVersion
 
     viewBinding {
         android.buildFeatures.viewBinding = true
@@ -14,8 +14,8 @@ android {
 
     defaultConfig {
         applicationId = "khrushchev.ilya.filmrecomender"
-        minSdkVersion(AppConfig.minSdk)
-        targetSdkVersion(AppConfig.targetSdk)
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
 
@@ -46,8 +46,9 @@ dependencies {
     implementation(AppDependencies.appLibraries)
     implementation(project(mapOf("path" to ":mainScreen")))
     implementation(project(mapOf("path" to ":moduleinjector")))
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     testImplementation(AppDependencies.testLibraries)
-    annotationProcessor(AppDependencies.roomAnnotation)
     kapt(AppDependencies.kapt)
     implementation(project(mapOf("path" to ":core")))
     implementation(project(mapOf("path" to ":shownew")))
