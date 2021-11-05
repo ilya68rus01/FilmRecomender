@@ -23,8 +23,17 @@ object ShowNewDependencies {
     private val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     private val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 
+    private val constraint =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    private val navigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    private val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
 
     val showNewLibraries = listOf(
+        constraint,
+        navigationFragment,
+        navigationUi,
         stdLib,
         appcompat,
         coreKtx,

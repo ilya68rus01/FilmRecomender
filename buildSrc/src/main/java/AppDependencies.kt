@@ -8,6 +8,20 @@ object AppDependencies {
     val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
 
+    private val material = "com.google.android.material:material:${Versions.material}"
+    private val constraint =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    private val navigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    private val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
+    // Feature module Support
+    private val navigationFeatures =
+        "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigation}"
+
+    // Kotlin
+    private val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+
     //test libs
     val junit = "junit:junit:${Versions.junit}"
     val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
@@ -21,6 +35,12 @@ object AppDependencies {
     private val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 
     val appLibraries = listOf(
+        fragmentKtx,
+        material,
+        constraint,
+        navigationFragment,
+        navigationFeatures,
+        navigationUi,
         coreKtx,
         appcompat,
         dagger,
