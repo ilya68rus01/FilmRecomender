@@ -15,6 +15,7 @@ object Versions {
     val fragment = "1.3.4"
     val retrofit = "2.1.0"
     val gson = "2.8.7"
+    val okHttp = "4.9.0"
     val material = "1.3.0"
     val rx = "3.0.0"
     val cardView = "1.0.0"

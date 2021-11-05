@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core.data.Film
+import com.example.shownew.R
 import com.example.shownew.databinding.NewFilmsElementBinding
 import com.squareup.picasso.Picasso
 import java.util.*

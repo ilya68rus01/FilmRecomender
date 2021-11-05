@@ -1,8 +1,8 @@
 package khrushchev.ilya.filmrecomender.di.components
 
-import com.example.core.AppProvider
 import com.example.core.ContextProvider
 import com.example.core.DaggerContextComponent
+import com.example.core.ShowNewDeps
 import com.example.moduleinjector.BaseFeatureApi
 import dagger.Component
 import khrushchev.ilya.filmrecomender.FilmRecomenderApp
@@ -14,7 +14,7 @@ import khrushchev.ilya.filmrecomender.di.ApplicationScope
         ContextProvider::class
     ]
 )
-interface ApplicationComponent : BaseFeatureApi, AppProvider {
+interface ApplicationComponent : BaseFeatureApi, ShowNewDeps {
 
     fun inject(app: FilmRecomenderApp)
 

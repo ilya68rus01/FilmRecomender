@@ -1,6 +1,7 @@
 package khrushchev.ilya.filmrecomender
 
 import android.app.Application
+import com.example.core.ShowNewDeps
 import com.example.moduleinjector.DependencyHolder1
 import com.example.shownew.di.ShowNewComponentHolder
 import com.example.shownew.di.ShowNewDependencies
@@ -33,6 +34,7 @@ class FilmRecomenderApp : Application() {
                 appComponent
             ) { holder, appComponent ->
                 object : ShowNewDependencies {
+                    override val contextProvider: ShowNewDeps = appComponent
                     override val dependencyHolder = holder
                 }
             }.dependencies
