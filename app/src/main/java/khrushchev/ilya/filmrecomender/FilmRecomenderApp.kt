@@ -1,8 +1,6 @@
 package khrushchev.ilya.filmrecomender
 
 import android.app.Application
-import com.example.mainscreen.MainScreenComponentHolder
-import com.example.mainscreen.MainScreenDependencies
 import com.example.moduleinjector.DependencyHolder1
 import com.example.shownew.di.ShowNewComponentHolder
 import com.example.shownew.di.ShowNewDependencies
@@ -30,16 +28,6 @@ class FilmRecomenderApp : Application() {
     }
 
     private fun connectModules() {
-        MainScreenComponentHolder.dependenciesProvider = {
-            DependencyHolder1<ApplicationComponent, MainScreenDependencies>(
-                api1 = appComponent
-            ) { holder, appComponent ->
-                object : MainScreenDependencies {
-                    override val dependencyHolder = holder
-                }
-            }.dependencies
-        }
-
         ShowNewComponentHolder.dependenciesProvider = {
             DependencyHolder1<ApplicationComponent, ShowNewDependencies>(
                 appComponent

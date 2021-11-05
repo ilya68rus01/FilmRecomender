@@ -29,8 +29,11 @@ object ShowNewDependencies {
 
     private val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 
+    private val constraint =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
     val showNewLibraries = listOf(
+        constraint,
         stdLib,
         appcompat,
         coreKtx,
