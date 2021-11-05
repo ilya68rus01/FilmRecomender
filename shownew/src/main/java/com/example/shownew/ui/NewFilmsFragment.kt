@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.core.data.Film
+import com.example.shownew.PopularFilmViewHolder
 import com.example.shownew.databinding.FragmentNewFilmsBinding
 import com.example.shownew.di.ShowNewComponentHolder
 import com.example.shownew.di.ShowNewDependencies
 import com.example.shownew.di.ViewModelFactory
 import com.example.shownew.di.component.DaggerShowNewComponent
+import com.example.shownew.ui.recycler.CardViewFilmViewHolder
 import com.example.shownew.ui.recycler.FilmsAdapter
 import javax.inject.Inject
 
@@ -33,12 +35,6 @@ class NewFilmsFragment : Fragment() {
         PopularFilmViewHolder(it)
     }
 
-    fun inject() {
-        ShowNewComponent.Initializer
-            .init((context?.applicationContext as App).getAppComponent())
-            .inject(this@NewFilmsFragment)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerShowNewComponent
             .factory()
@@ -58,7 +54,7 @@ class NewFilmsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.newsFilmsRecycler.adapter = adapter
+        binding.noveltyGroup.newsFilmsRecycler.adapter = newFilmsAdapter
         viewModel.newFilmsLiveData.observe(viewLifecycleOwner, this::updateUi)
         viewModel.getNewFilms()
     }

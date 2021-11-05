@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.core.data.Film
-import com.example.core.data.Page
 import com.example.shownew.repository.KeyInterceptor
 import com.example.shownew.repository.NetworkRepository
 import com.example.shownew.repository.NetworkRepositoryImpl
@@ -33,7 +32,7 @@ class NewFilmsViewModel @Inject constructor(
             .create(TmdbNoveltyApi::class.java)
     )
 
-    private val _newFilmsLiveData = liveData<Page<Film>> {
+    private val _newFilmsLiveData = liveData<List<Film>> {
         repo.getUpComing()
             .blockingGet()
     } as MutableLiveData
@@ -45,6 +44,7 @@ class NewFilmsViewModel @Inject constructor(
         repo.getUpComing(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .map { it.results }
             .subscribe { newFilms -> _newFilmsLiveData.value = newFilms }
             .let(disposable::add)
     }

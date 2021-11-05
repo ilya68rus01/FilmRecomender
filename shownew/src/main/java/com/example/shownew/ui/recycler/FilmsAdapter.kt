@@ -3,6 +3,7 @@ package com.example.shownew.ui.recycler
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core.data.Film
+import com.example.shownew.BaseViewHolder
 
 class FilmsAdapter <T : BaseViewHolder>
 constructor(
