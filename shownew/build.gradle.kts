@@ -18,7 +18,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -26,7 +26,7 @@ android {
             )
         }
 
-        getByName("debug") {
+        debug {
             isMinifyEnabled = false
         }
     }
@@ -47,6 +47,7 @@ android {
 
 dependencies {
     implementation(ShowNewDependencies.showNewLibraries)
+    implementation(project(mapOf("path" to ":moduleinjector")))
     kapt(ShowNewDependencies.kaptLibraries)
     implementation(project(mapOf("path" to ":core")))
 }

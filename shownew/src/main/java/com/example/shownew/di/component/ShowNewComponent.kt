@@ -1,30 +1,27 @@
 package com.example.shownew.di.component
 
-import com.example.core.di.ApplicationProvider
-import com.example.shownew.NewFilmsFragment
+import com.example.shownew.di.ShowNewApi
+import com.example.shownew.di.ShowNewDependencies
+import com.example.shownew.di.module.ShowNewModule
 import com.example.shownew.di.module.ViewModelModule
+import com.example.shownew.ui.NewFilmsFragment
 import dagger.Component
 
 @Component(
-    dependencies = [
-        ApplicationProvider::class
-    ],
     modules = [
+        ShowNewModule::class,
         ViewModelModule::class
+    ],
+    dependencies = [
+        ShowNewDependencies::class
     ]
 )
-interface ShowNewComponent {
-    fun inject(fragment: NewFilmsFragment)
+interface ShowNewComponent : ShowNewApi, ShowNewDependencies {
 
-    class Initializer private constructor() {
-        companion object {
-            fun init(
-                applicationProvider: ApplicationProvider
-            ): ShowNewComponent {
-                return DaggerShowNewComponent.builder()
-                    .applicationProvider(applicationProvider)
-                    .build()
-            }
-        }
+    fun inject(newFilmsFragment: NewFilmsFragment)
+
+    @Component.Factory
+    interface Factory {
+        fun create(dependencies: ShowNewDependencies): ShowNewComponent
     }
 }

@@ -2,11 +2,12 @@ plugins {
     id ("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("kotlin-android")
 }
 
 android {
-    compileSdkVersion(AppConfig.compileSdk)
-    buildToolsVersion(AppConfig.buildToolsVersion)
+    compileSdk = AppConfig.compileSdk
+    buildToolsVersion = AppConfig.buildToolsVersion
 
     viewBinding {
         android.buildFeatures.viewBinding = true
@@ -14,8 +15,8 @@ android {
 
     defaultConfig {
         applicationId = "khrushchev.ilya.filmrecomender"
-        minSdkVersion(AppConfig.minSdk)
-        targetSdkVersion(AppConfig.targetSdk)
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
 
@@ -40,15 +41,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
     implementation(AppDependencies.appLibraries)
-    implementation(project(mapOf("path" to ":mainScreen")))
+    implementation(project(mapOf("path" to ":moduleinjector")))
     testImplementation(AppDependencies.testLibraries)
-    annotationProcessor(AppDependencies.roomAnnotation)
     kapt(AppDependencies.kapt)
     implementation(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":repo")))
     implementation(project(mapOf("path" to ":shownew")))
 }

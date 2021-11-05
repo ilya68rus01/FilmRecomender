@@ -2,9 +2,9 @@ package com.example.shownew.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.shownew.NewFilmsViewModel
 import com.example.shownew.di.ViewModelFactory
 import com.example.shownew.di.ViewModelKey
+import com.example.shownew.ui.NewFilmsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
