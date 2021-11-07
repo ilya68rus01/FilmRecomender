@@ -48,5 +48,6 @@ dependencies {
     implementation(FilmInfoDependencies.libraries)
     implementation(project(mapOf("path" to ":moduleinjector")))
     implementation(project(mapOf("path" to ":core")))
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt(FilmInfoDependencies.kaptLibraries)
 }
