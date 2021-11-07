@@ -5,5 +5,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-include(":app", ":shownew", ":core", ":moduleinjector")
+include(":app", ":shownew", ":core", ":moduleinjector", ":film_info")
 rootProject.name = "FilmRecomender"
