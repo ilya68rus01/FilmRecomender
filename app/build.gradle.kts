@@ -52,6 +52,7 @@ android {
 dependencies {
     implementation(AppDependencies.appLibraries)
     implementation(project(mapOf("path" to ":moduleinjector")))
+    implementation(project(mapOf("path" to ":film_info")))
     testImplementation(AppDependencies.testLibraries)
     kapt(AppDependencies.kapt)
     implementation(project(mapOf("path" to ":core")))

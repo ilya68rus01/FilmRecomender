@@ -1,9 +1,5 @@
-package com.example.shownew.di.module
+package com.example.feature.film_info.di.module
 
-import com.example.shownew.repository.KeyInterceptor
-import com.example.shownew.repository.NetworkRepository
-import com.example.shownew.repository.NetworkRepositoryImpl
-import com.example.shownew.repository.TmdbNoveltyApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -15,13 +11,12 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-class ShowNewModule {
-
+class FilmInfoModule {
     private val TMDB_BASE_URL = "https://api.themoviedb.org/"
 
-    @Provides
-    fun provideApiKeyInterceptor(): Interceptor =
-        KeyInterceptor()
+//    @Provides
+//    fun provideApiKeyInterceptor(): Interceptor =
+//        KeyInterceptor()
 
     @Provides
     fun provideOkHttpClient(
@@ -52,13 +47,13 @@ class ShowNewModule {
             .addConverterFactory(converter)
             .build()
 
-    @Provides
-    fun provideTmdbNoveltyApi(retrofit: Retrofit): TmdbNoveltyApi =
-        retrofit.create(TmdbNoveltyApi::class.java)
-
-    @Provides
-    fun provideRepository(
-        api: TmdbNoveltyApi
-    ): NetworkRepository =
-        NetworkRepositoryImpl(api)
+//    @Provides
+//    fun provideTmdbNoveltyApi(retrofit: Retrofit): TmdbNoveltyApi =
+//        retrofit.create(TmdbNoveltyApi::class.java)
+//
+//    @Provides
+//    fun provideRepository(
+//        api: TmdbNoveltyApi
+//    ): NetworkRepository =
+//        NetworkRepositoryImpl(api)
 }
