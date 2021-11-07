@@ -7,7 +7,8 @@ import com.example.shownew.BaseViewHolder
 
 class FilmsAdapter <T : BaseViewHolder>
 constructor(
-    private val createCallback: (parent: ViewGroup) -> T
+    private val createCallback: (parent: ViewGroup) -> T,
+    private val onFilmClick: (id: Int) -> Unit
 ) : RecyclerView.Adapter<T>() {
     private val newFilms = mutableListOf<Film>()
 
@@ -18,6 +19,9 @@ constructor(
 
     override fun onBindViewHolder(holder: T, position: Int) {
         holder.bindView(newFilms[position])
+        holder.itemView.setOnClickListener {
+            onFilmClick(newFilms[position].id)
+        }
     }
 
     fun setNewFilms(films: List<Film>) {

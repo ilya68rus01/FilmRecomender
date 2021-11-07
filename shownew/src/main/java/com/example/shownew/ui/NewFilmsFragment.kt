@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import com.example.core.data.Film
 import com.example.shownew.PopularFilmViewHolder
 import com.example.shownew.databinding.FragmentNewFilmsBinding
@@ -27,13 +30,28 @@ class NewFilmsFragment : Fragment() {
 
     private var _binding: FragmentNewFilmsBinding? = null
     private val binding get() = _binding!!
+
     private val viewModel: NewFilmsViewModel by viewModels { providerFactory }
-    private val newFilmsAdapter = FilmsAdapter{
-        CardViewFilmViewHolder(it)
-    }
-    private val popularFilmsAdapter = FilmsAdapter{
-        PopularFilmViewHolder(it)
-    }
+
+    private val newFilmsAdapter = FilmsAdapter(
+        { CardViewFilmViewHolder(it) },
+        { filmId ->
+            val request = NavDeepLinkRequest.Builder
+                .fromUri("http://film.recommender/film/info/$filmId".toUri())
+                .build()
+            findNavController().navigate(request)
+        }
+    )
+
+    private val popularFilmsAdapter = FilmsAdapter(
+        { PopularFilmViewHolder(it) },
+        { filmId ->
+            val request = NavDeepLinkRequest.Builder
+                .fromUri("http://film.recommender/film/info/$filmId".toUri())
+                .build()
+            findNavController().navigate(request)
+        }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerShowNewComponent

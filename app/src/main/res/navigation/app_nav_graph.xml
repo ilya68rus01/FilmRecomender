@@ -6,4 +6,6 @@
 
     <include app:graph="@navigation/show_new_graph" />
 
+    <include app:graph="@navigation/film_info_nav_graph" />
+
 </navigation>
