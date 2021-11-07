@@ -13,12 +13,16 @@ import javax.inject.Inject
 
 class FilmInfoFragment : Fragment() {
 
-    private var _binding: FragmentFilmInfoBinding? = null
-    private val binding
-        get() = _binding ?: throw IllegalArgumentException("Binding not initialized")
-
     @Inject
     lateinit var filmInfoDependencies: FilmInfoDependencies
+
+    @Inject
+    lateinit var viewModel: FilmInfoViewModel
+
+    private var _binding: FragmentFilmInfoBinding? = null
+
+    private val binding
+        get() = _binding ?: throw IllegalArgumentException("Binding not initialized")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerFilmInfoComponent.factory()
@@ -34,5 +38,4 @@ class FilmInfoFragment : Fragment() {
         _binding = FragmentFilmInfoBinding.inflate(inflater)
         return binding.root
     }
-
 }
