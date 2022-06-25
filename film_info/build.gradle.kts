@@ -19,6 +19,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            buildConfigField("String","TMDB_API_KEY", getLocalProperty("TMDB_API_KEY").toString())
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -27,6 +28,7 @@ android {
 
         debug {
             isMinifyEnabled = false
+            buildConfigField("String","TMDB_API_KEY", getLocalProperty("TMDB_API_KEY").toString())
         }
     }
 

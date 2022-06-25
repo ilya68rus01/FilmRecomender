@@ -1,3 +1,5 @@
+import java.util.*
+
 plugins {
     id ("com.android.application")
     kotlin("android")
@@ -25,7 +27,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
