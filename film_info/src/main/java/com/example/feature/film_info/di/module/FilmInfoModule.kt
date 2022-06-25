@@ -1,5 +1,9 @@
 package com.example.feature.film_info.di.module
 
+import com.example.feature.film_info.repository.FilmInfoDataSource
+import com.example.feature.film_info.repository.FilmInfoDataSourceImpl
+import com.example.feature.film_info.repository.KeyInterceptor
+import com.example.feature.film_info.repository.TmdbFilmInfoApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -14,9 +18,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class FilmInfoModule {
     private val TMDB_BASE_URL = "https://api.themoviedb.org/"
 
-//    @Provides
-//    fun provideApiKeyInterceptor(): Interceptor =
-//        KeyInterceptor()
+    @Provides
+    fun provideApiKeyInterceptor(): Interceptor =
+        KeyInterceptor()
 
     @Provides
     fun provideOkHttpClient(
@@ -47,13 +51,13 @@ class FilmInfoModule {
             .addConverterFactory(converter)
             .build()
 
-//    @Provides
-//    fun provideTmdbNoveltyApi(retrofit: Retrofit): TmdbNoveltyApi =
-//        retrofit.create(TmdbNoveltyApi::class.java)
-//
-//    @Provides
-//    fun provideRepository(
-//        api: TmdbNoveltyApi
-//    ): NetworkRepository =
-//        NetworkRepositoryImpl(api)
+    @Provides
+    fun provideTmdbNoveltyApi(retrofit: Retrofit): TmdbFilmInfoApi =
+        retrofit.create(TmdbFilmInfoApi::class.java)
+
+    @Provides
+    fun provideFilmInfoDataSource(
+        api: TmdbFilmInfoApi
+    ): FilmInfoDataSource =
+        FilmInfoDataSourceImpl(api)
 }
