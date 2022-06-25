@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import com.example.core.data.Film
 import com.example.core.extensions.launchWhenViewStarted
@@ -20,9 +18,7 @@ import com.example.shownew.di.ViewModelFactory
 import com.example.shownew.di.component.DaggerShowNewComponent
 import com.example.shownew.ui.recycler.CardViewFilmViewHolder
 import com.example.shownew.ui.recycler.FilmsAdapter
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 class NewFilmsFragment : Fragment() {
@@ -40,22 +36,12 @@ class NewFilmsFragment : Fragment() {
 
     private val newFilmsAdapter = FilmsAdapter(
         { CardViewFilmViewHolder(it) },
-        { filmId ->
-            val request = NavDeepLinkRequest.Builder
-                .fromUri("http://film.recommender/film/info/$filmId".toUri())
-                .build()
-            findNavController().navigate(request)
-        }
+        {viewModel.openFilm(it)}
     )
 
     private val popularFilmsAdapter = FilmsAdapter(
         { PopularFilmViewHolder(it) },
-        { filmId ->
-            val request = NavDeepLinkRequest.Builder
-                .fromUri("http://film.recommender/film/info/$filmId".toUri())
-                .build()
-            findNavController().navigate(request)
-        }
+        {viewModel.openFilm(it)}
     )
 
     override fun onAttach(context: Context) {
@@ -75,7 +61,11 @@ class NewFilmsFragment : Fragment() {
         launchWhenViewStarted {
             with(viewModel) {
                 newFilms.filter { it.isNotEmpty() }
-                    .collect { updateUi(it) }
+                    .observe { updateUi(it) }
+
+                navCommand.observe {
+                    findNavController().navigate(it.request)
+                }
             }
         }
         return binding.root

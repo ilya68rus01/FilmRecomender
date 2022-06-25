@@ -4,6 +4,8 @@ import com.example.shownew.repository.KeyInterceptor
 import com.example.shownew.repository.NetworkRepository
 import com.example.shownew.repository.NetworkRepositoryImpl
 import com.example.shownew.repository.TmdbNoveltyApi
+import com.example.shownew.router.NewFilmsFragmentRouter
+import com.example.shownew.router.NewFilmsFragmentRouterImpl
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -18,6 +20,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ShowNewModule {
 
     private val TMDB_BASE_URL = "https://api.themoviedb.org/"
+
+    @Provides
+    fun provideNewFilmsFragmentRouter(): NewFilmsFragmentRouter = NewFilmsFragmentRouterImpl()
 
     @Provides
     fun provideApiKeyInterceptor(): Interceptor =
