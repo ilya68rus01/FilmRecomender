@@ -9,7 +9,8 @@ class NetworkRepositoryImpl(
     private val api: TmdbNoveltyApi
 ) : NetworkRepository {
 
-    override fun getUpComing(page: Int): Single<Page<Film>> =
+    override fun getUpComing(page: Int): Single<List<Film>> =
         api.getUpComing(page)
             .subscribeOn(Schedulers.io())
+            .map { it.results }
 }

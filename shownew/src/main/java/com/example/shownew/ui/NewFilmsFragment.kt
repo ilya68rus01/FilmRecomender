@@ -1,5 +1,6 @@
 package com.example.shownew.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import com.example.core.data.Film
+import com.example.core.extensions.launchWhenViewStarted
 import com.example.shownew.PopularFilmViewHolder
 import com.example.shownew.databinding.FragmentNewFilmsBinding
 import com.example.shownew.di.ShowNewComponentHolder
@@ -18,6 +20,9 @@ import com.example.shownew.di.ViewModelFactory
 import com.example.shownew.di.component.DaggerShowNewComponent
 import com.example.shownew.ui.recycler.CardViewFilmViewHolder
 import com.example.shownew.ui.recycler.FilmsAdapter
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 class NewFilmsFragment : Fragment() {
@@ -53,12 +58,12 @@ class NewFilmsFragment : Fragment() {
         }
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         DaggerShowNewComponent
             .factory()
             .create(ShowNewComponentHolder.getComponent())
             .inject(this)
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -67,14 +72,18 @@ class NewFilmsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNewFilmsBinding.inflate(inflater)
+        launchWhenViewStarted {
+            with(viewModel) {
+                newFilms.filter { it.isNotEmpty() }
+                    .collect { updateUi(it) }
+            }
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.noveltyGroup.newsFilmsRecycler.adapter = newFilmsAdapter
-        viewModel.newFilmsLiveData.observe(viewLifecycleOwner, this::updateUi)
-        viewModel.getNewFilms()
     }
 
     override fun onDestroy() {

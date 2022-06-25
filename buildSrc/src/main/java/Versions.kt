@@ -1,5 +1,8 @@
 //version constants for the Kotlin DSL dependencies
 object Versions {
+    val coroutinesScope = "2.4.1"
+    val coroutines = "1.5.2"
+
     //app level
     const val gradle = "7.0.0"
     const val kotlin = "1.5.0"

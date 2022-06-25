@@ -6,5 +6,5 @@ import io.reactivex.rxjava3.core.Single
 
 interface NetworkRepository {
 
-    fun getUpComing(page: Int = 1): Single<Page<Film>>
+    fun getUpComing(page: Int = 1): Single<List<Film>>
 }

@@ -5,9 +5,7 @@
     <string name="releaseDate">Дата выхода: %s</string>
     <string name="runtime">Длительность: %d</string>
     <string name="filmGenres">Жанр: %s</string>
-    <string name="title_home">Home</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Главная</string>
     <string name="main_title">Главная</string>
     <string name="new_films">Новинки</string>
     <string name="all_new_film">Все</string>

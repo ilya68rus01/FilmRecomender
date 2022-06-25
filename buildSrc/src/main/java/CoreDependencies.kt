@@ -5,6 +5,10 @@ object CoreDependencies {
     private val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rx}"
     private val rx = "io.reactivex.rxjava3:rxjava:${Versions.rx}"
 
+    private val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    private val coroutinesScope = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.coroutinesScope}"
+
+
     private val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     private val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     private val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
@@ -26,7 +30,9 @@ object CoreDependencies {
         dagger,
         daggerAndroid,
         daggerAndroidSup,
-        gson
+        gson,
+        coroutines,
+        coroutinesScope,
     )
 
     val coreKapt = listOf(
