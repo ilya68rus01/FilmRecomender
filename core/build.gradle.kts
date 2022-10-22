@@ -1,45 +1,24 @@
-plugins {
-    id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
-}
+import khrushchev.ilya.automizer.helper.*
+import khrushchev.ilya.automizer.module
 
-android {
-    compileSdk = AppConfig.compileSdk
-    buildToolsVersion = AppConfig.buildToolsVersion
-
-    defaultConfig {
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-
-        testInstrumentationRunner = AppConfig.androidTestInstrumentation
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-        debug {
-            isMinifyEnabled = false
+module(
+    appDependency = addDep(
+        *CoreDependencies.coreLibraries.map {
+            it.impl
+        }.toTypedArray(),
+        *CoreDependencies.coreKapt.map {
+            it.kapt
+        }.toTypedArray(),
+        *CoreDependencies.testLibraries.map {
+            it.test
+        }.toTypedArray(),
+        *CoreDependencies.androidTestLibraries.map {
+            it.androidTest
+        }.toTypedArray(),
+    ),
+    androidLibraryConfiguration = {
+        buildFeatures {
+            viewBinding = true
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-
-dependencies {
-    implementation(CoreDependencies.coreLibraries)
-    kapt(CoreDependencies.coreKapt)
-    testImplementation(CoreDependencies.testLibraries)
-    androidTestImplementation(CoreDependencies.androidTestLibraries)
-}
+)

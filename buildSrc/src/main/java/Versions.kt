@@ -4,7 +4,7 @@ object Versions {
     val coroutines = "1.5.2"
 
     //app level
-    const val gradle = "7.0.0"
+    const val gradle = "7.2.0"
     const val kotlin = "1.5.0"
 
     //libs
@@ -26,7 +26,7 @@ object Versions {
     //test
     val junit = "4.12"
     val extJunit = "1.1.2"
-    val espresso = "3.3.0"
+    val espresso = "3.4.0"
     val gsonVersions = "2.8.5"
     val picasso = "2.5.2"
 }

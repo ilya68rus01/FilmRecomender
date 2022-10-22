@@ -1,62 +1,26 @@
-import java.util.*
+import khrushchev.ilya.automizer.application
+import khrushchev.ilya.automizer.helper.*
 
-plugins {
-    id ("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
-    id("kotlin-android")
-}
-
-android {
-    compileSdk = AppConfig.compileSdk
-    buildToolsVersion = AppConfig.buildToolsVersion
-
-    viewBinding {
-        android.buildFeatures.viewBinding = true
-    }
-
-    defaultConfig {
-        applicationId = "khrushchev.ilya.filmrecomender"
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
-
-        testInstrumentationRunner = AppConfig.androidTestInstrumentation
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-
-        debug {
-            isMinifyEnabled = false
+application(
+    appDependency = addDep(
+        *AppDependencies.appLibraries.map {
+            it.impl
+        }.toTypedArray(),
+        *AppDependencies.testLibraries.map {
+            it.test
+        }.toTypedArray(),
+        *AppDependencies.kapt.map {
+            it.kapt
+        }.toTypedArray(),
+    ) + addDep(
+        module("moduleinjector"),
+        module("film_info"),
+        module("core"),
+        module("shownew")
+    ),
+    baseAppModuleExtension = {
+        buildFeatures {
+            viewBinding = true
         }
     }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    buildFeatures {
-        viewBinding = true
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-
-dependencies {
-    implementation(AppDependencies.appLibraries)
-    implementation(project(mapOf("path" to ":moduleinjector")))
-    implementation(project(mapOf("path" to ":film_info")))
-    testImplementation(AppDependencies.testLibraries)
-    kapt(AppDependencies.kapt)
-    implementation(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":shownew")))
-}
+)

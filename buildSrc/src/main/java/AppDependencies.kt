@@ -1,13 +1,13 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 object AppDependencies {
+
     //std lib
-    val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    private val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
     //android ui
-    val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-    val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
-
+    private val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+    private val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     private val material = "com.google.android.material:material:${Versions.material}"
     private val constraint =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
